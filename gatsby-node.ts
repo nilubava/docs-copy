@@ -9,7 +9,6 @@ exports.onCreateNode = ({ node, getNode, actions }: any) => {
     if (value === 'index') {
       value = ''
     }
-
     createNodeField({
       node,
       name: `slug`,

@@ -58,7 +58,6 @@ const SEO = ({ title, description, homepage }: SEOProps) => {
       <meta property="og:image:type" content={oImgType} />
       <meta property="og:image:width" content={oImgWidth} />
       <meta property="og:image:height" content={oImgHeight} />
-      <link rel="canonical" href={canonicalUrl} />
       <link rel="icon" href={favicon} />
     </>
   )
