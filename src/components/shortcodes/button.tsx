@@ -81,8 +81,8 @@ const getAbsPath = (href: any, location: any) => {
     path
       .resolve(
         location.pathname
-          .replace('/docs', '')
-          .replace('docs', '')
+          .replace('/docs-copy', '')
+          .replace('docs-copy', '')
           .replace(/\/$/, '')
           .split(path.sep)
           .slice(0, -1)
