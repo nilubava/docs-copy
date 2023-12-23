@@ -2,7 +2,8 @@
 title: 'Spelling, punctuation, and formatting'
 metaTitle: 'Prisma docs style guide: spelling, punctuation, and formatting'
 metaDescription: 'This section of the style guide provides guidelines on how to present the information you add.'
-tocDepth: 3
+tocDepth: 4
+search: false
 ---
 
 ## Avoid contractions
@@ -85,15 +86,16 @@ Sometimes there are some terms where it's not clear whether to use a hyphen or n
 - Autocomplete
 - Codebase
 
-### Type-safe and type safe
+### Type-safe, type safe, and type safety
 
-- "The code is type safe." (noun)
-- "This is type-safe code." (adjective)
+- "The code is type safe." (adjective after the noun)
+- "This is type-safe code." (adjective before the noun)
+- "A key feature of Prisma ORM is type safety." (noun)
 
 ### Data source and `datasource`
 
 - The `datasource` block
-- "You must regenerate the client when you introduce a new data source"
+- "You must regenerate Prisma Client when you introduce a new data source"
 
 ## Files and file types
 
@@ -140,7 +142,7 @@ Prisma automatically converts JavaScript objects (for example, `{ extendedPetsDa
 
 Use the Oxford Comma except in titles. It is a comma used after the penultimate item in a list of three or more items, before "and" or "or". It makes things clearer. Example: "... an Italian painter, sculptor, and architect".
 
-[Confusion can happen when you don’t use the Oxford comma.](https://img.buzzfeed.com/buzzfeed-static/static/2015-02/22/18/enhanced/webdr11/enhanced-buzz-32156-1424646300-12.jpg?downsize=715:*&output-format=auto&output-quality=auto)
+In rare cases, the Oxford Comma can make a list less clear. In this situation, re-order the list where possible to make the meaning clear.
 
 ## Code snippets
 
@@ -161,7 +163,7 @@ This [`createMany`](..) query does the following:
 
 ### Show the result of a query wherever possible
 
-Use the [`<CodeWithResult>`](/about/prisma-docs/docs-components/mdx-examples#code-with-output) component to show a query and the results of that query.
+Use the [`<CodeWithResult>`](/about/prisma-docs/docs-components/mdx-examples#code-with-result) component to show a query and the results of that query.
 
 ### Use the `highlight` property to highlight
 
@@ -242,7 +244,7 @@ Ensure that code snippets you include are realistic examples that would work if 
 
 ### Prisma schema naming conventions
 
-When you create a Prisma schema for an example, follow the [naming conventions](/reference/api-reference/prisma-schema-reference#naming-conventions) we advise for users.
+When you create a Prisma schema for an example, follow the [naming conventions](/orm/reference/prisma-schema-reference#naming-conventions) we advise for users.
 
 ### Lists of shell commands
 
@@ -257,7 +259,7 @@ When you need to provide a series of CLI commands as instructions to the reader,
 
 #### Better
 
-```shell
+```terminal
 cd path/to/server
 docker-compose up -d --build
 ./node_modules/.bin/sequelize db:migrate # or `npx sequelize db:migrate`
@@ -293,7 +295,7 @@ Always use `npm` commands instead of `yarn`.
 
 ### Error message reference
 
-The [error message reference](/reference/api-reference/error-reference) is a semi-generated doc. Do not edit the list of error codes manually. Use the script to generate the error codes.
+The [error message reference](/orm/reference/error-reference) is a semi-generated doc. Do not edit the list of error codes manually. Use the script to generate the error codes.
 
 When you bring the error messages into the page, remove any double quotes around them.
 

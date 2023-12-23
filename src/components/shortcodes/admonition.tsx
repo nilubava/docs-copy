@@ -1,7 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
-import { theme } from '@prisma/lens/dist/web'
 import { AlertCircle } from 'react-feather'
+import styled from 'styled-components'
+
+import { defaultTheme as theme } from '../../theme'
 
 interface AdmonitionType {
   type?: string
@@ -10,9 +11,9 @@ interface AdmonitionType {
 type AdmonitionProps = React.ReactNode & AdmonitionType
 
 const colorMap: any = {
-  info: theme.colors.gray200,
-  warning: theme.colors.orange300,
-  alert: theme.colors.red600,
+  info: theme.colors.gray[200],
+  warning: theme.colors.orange[300],
+  alert: theme.colors.red[600],
 }
 
 const Admonition = ({ children, type, ...props }: AdmonitionProps) => {
@@ -23,11 +24,15 @@ const Admonition = ({ children, type, ...props }: AdmonitionProps) => {
           <AlertCircle color="white" />
         </span>
       )}
-      {Array.isArray(children) ? (
+      {children && Array.isArray(children) ? (
         <FlexContainer>
-          {children.map((child: any, index: number) => (
-            <ChildContainer key={index}>{child.props.children}</ChildContainer>
-          ))}
+          {children.map((child: any, index: number) =>
+            child.props.originalType === 'ul' ? (
+              <ChildList key={index}>{child && child.props && child.props.children}</ChildList>
+            ) : (
+              <ChildDiv key={index}>{child && child.props && child.props.children}</ChildDiv>
+            )
+          )}
         </FlexContainer>
       ) : (
         children
@@ -43,8 +48,12 @@ const FlexContainer = styled.div`
   flex-direction: column;
 `
 
-const ChildContainer = styled.div`
+const ChildDiv = styled.div`
   margin: 0;
+`
+
+const ChildList = styled.ul`
+  padding-left: 16px;
 `
 
 const AdmonitionWrapper = styled.span<{ type?: string }>`
@@ -52,13 +61,13 @@ const AdmonitionWrapper = styled.span<{ type?: string }>`
   font-style: normal;
   font-size: 16px;
   line-height: 24px;
-  color: ${theme.colors.gray600} !important;
+  color: ${theme.colors.gray[600]} !important;
   padding-left: ${(p) => (p.type === 'alert' ? '3rem' : '1.5rem')};
-  padding-bottom: 8px;
   padding-bottom: 8px;
   margin: 2rem 0px;
   position: relative;
-  display: flex;
+  display: block;
+  max-width: 100%;
   pre {
     font-weight: normal;
   }
@@ -90,10 +99,14 @@ const AdmonitionWrapper = styled.span<{ type?: string }>`
   }
 
   code {
-    color: ${theme.colors.gray600} !important;
+    color: ${theme.colors.gray[600]} !important;
   }
 
   p {
     margin: 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    color: ${theme.colors.gray[500]} !important;
   }
 `
